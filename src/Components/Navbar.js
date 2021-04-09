@@ -50,7 +50,7 @@ function Navbar() {
         </li>
         <li onClick={startVisualisation}>begin</li>
         <li onClick={refresh}>refresh</li>
-        <li onClick={clearAll}>clear</li>
+        <li onClick={clearAll}>delete</li>
       </ul>
     </div>
   );
