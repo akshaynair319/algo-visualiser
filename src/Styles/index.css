@@ -1,30 +1,30 @@
 /* general styling */
 :root {
   /* variables */
-  --primary: #ccc;
-  --dark: #333;
+  --primary: #5983f8;
+  --primary-dark: #0b2e8d;
+  --dark: rgb(22, 21, 21);
   --shadow: 0 1px 5px rgb(104, 104, 104);
   --grid-node-color: rgb(249, 243, 243);
-  --grid-node-color-hover: rgba(249, 243, 243, 0.137);
+  --grid-node-color-hover: rgb(0, 0, 0);
   --grid-node-color-vertex: black;
-  --grid-node-color-visited-vertex: rgb(126, 202, 156);
+  --grid-node-color-visited-vertex: var(--primary);
 }
 
 .light-theme {
-  --primary: #ccc;
-  --dark: #333;
+  --primary: #5983f8;
+  --primary-dark: #0b2e8d;
+  --dark: rgb(22, 21, 21);
   --shadow: 0 1px 5px rgb(104, 104, 104);
   --grid-node-color: #f9f3f3;
-  --grid-node-color-hover: rgb(233, 206, 206);
-  --grid-node-color-visited-vertex: rgb(126, 202, 156);
+  --grid-node-color-visited-vertex: var(--primary);
 }
 .dark-theme {
   --primary: #333;
   --dark: #ccc;
   --shadow: 0 1px 5px rgba(245, 223, 223, 0.459);
-  --grid-node-color: #1b1a1a;
-  --grid-node-color-hover: rgba(249, 243, 243, 0.137);
-  --grid-node-color-visited-vertex: rgb(24, 80, 24);
+  --grid-node-color: #2b2929;
+  --grid-node-color-visited-vertex: var(--primary-dark);
 }
 html {
   box-sizing: border-box;
@@ -35,9 +35,9 @@ html {
 body {
   background: var(--primary);
   margin: 2rem;
-  /* transition: background 1000ms linear; */
 }
 
+/* component styling */
 .appContainer {
   display: grid;
   grid-template-rows: 1fr 9fr;
@@ -50,8 +50,9 @@ body {
 .navbar {
   padding: 0.5rem;
   display: grid;
-  grid-template-columns: 50px 200px 1fr;
+  grid-template-columns: 50px 200px 1fr 50px;
   align-items: center;
+  justify-content: center;
   justify-items: center;
 }
 .themeToggle {
@@ -64,61 +65,59 @@ body {
 }
 ul {
   margin: 0px;
-  padding: 0 0.5rem;
+  padding: 0 0.2rem;
   justify-content: space-around;
   justify-self: stretch;
   list-style: none;
   display: grid;
-  grid-template-columns: repeat(auto-fill, 140px);
-  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, 180px);
+  gap: 0.5rem;
 }
 
 ul li {
-  background: var(--primary);
-  display: block;
+  background: var(--primary-dark);
+  display: flex;
   text-decoration: none;
   padding: 0.8rem;
   text-align: center;
   color: var(--dark);
   text-transform: uppercase;
   font-size: 0.8rem;
-  font-weight: bolder;
+  /* font-weight: bolder; */
   box-shadow: var(--shadow);
   cursor: pointer;
+  justify-content: center;
+  align-items: center;
 }
 
 ul li:hover {
-  background: var(--dark);
   color: var(--primary);
+  font-weight: bold;
 }
 
-/* adding animation to list items */
 li:hover {
-  animation-name: link;
-  animation-duration: 0.5s;
-  border-radius: 10%;
   cursor: pointer;
-}
-
-@keyframes link {
-  0% {
-    font-size: 0.5rem;
-  }
-  100% {
-    font-size: 0.8rem;
-  }
 }
 
 .dropdown {
   position: absolute;
   left: 100px;
-  top: 100px;
+  top: 0px;
   margin: 0;
   padding: 0;
   background-color: var(--dark);
   z-index: 3;
+  display: none;
 }
 
+.dropdown-show {
+  display: block;
+  animation-name: dropdown;
+}
+
+.fa-caret-down {
+  padding: 0 0 0 5px;
+}
 .dropdown li {
   text-transform: uppercase;
   text-decoration: none;
@@ -127,12 +126,12 @@ li:hover {
   margin: 0.5rem;
   padding: 1rem;
   font-size: 0.8rem;
-  background-color: var(--primary);
-  color: var(--dark);
+  /* background-color: var(--primary); */
+  color: var(--primary);
 }
 .dropdown li:hover {
-  background-color: var(--dark);
-  color: var(--primary);
+  background-color: var(--primary);
+  color: var(--dark);
 }
 /* grid for nodes*/
 .grid-container {
@@ -161,17 +160,13 @@ li:hover {
 
 /* node selected as vertex */
 .vertex {
-  background-color: black;
+  background-color: var(--grid-node-color-vertex);
   border: none;
   display: grid;
   justify-content: center;
   align-items: center;
   cursor: pointer;
   z-index: 2;
-}
-
-.vertex:hover {
-  background-color: #444;
 }
 
 .visited {
@@ -184,18 +179,8 @@ li:hover {
 
 /* active button which is selected as the first end-point of edge */
 .active {
-  background-color: rgb(168, 90, 221) !important;
+  background-color: var(--primary-dark);
   z-index: 2;
-}
-
-/* class added to other algos which have not been selected */
-.inactive {
-  background-color: var(--primary);
-  color: var(--dark);
-}
-.inactive:hover {
-  background-color: var(--primary);
-  color: var(--dark);
 }
 
 /* graph edge: additional styling applied inline*/

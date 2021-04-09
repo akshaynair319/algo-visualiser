@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import Dropdown from "./Dropdown";
+import Customize from "./Customize";
 import { useGlobalContext } from "./Context";
 
 function Navbar() {
@@ -38,20 +39,25 @@ function Navbar() {
       </div>
       <div className="title">algo-visualiser </div>
       {dropdown && (
-        <Dropdown rect={selectAlgoRef.current.getBoundingClientRect()} />
+        <Dropdown
+          rect={selectAlgoRef.current.getBoundingClientRect()}
+          show={dropdown}
+        />
       )}
       <ul>
         <li
           onClick={() => setDropdown(!dropdown)}
           ref={selectAlgoRef}
-          className={`${currentAlgo !== "" ? "active" : ""}`}
+          className={`${currentAlgo !== "" ? "active-algo" : ""}`}
         >
           {currentAlgo || "Select ALgo"}
+          <i class="fas fa-caret-down fa-2x"></i>
         </li>
         <li onClick={startVisualisation}>begin</li>
         <li onClick={refresh}>refresh</li>
         <li onClick={clearAll}>delete</li>
       </ul>
+      <Customize />
     </div>
   );
 }

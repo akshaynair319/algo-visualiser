@@ -2,7 +2,7 @@ import React from "react";
 import { algorithms } from "../Data/Algorithms";
 import { useGlobalContext } from "./Context";
 
-function Dropdown({ rect }) {
+function Dropdown({ rect, show }) {
   const { currentAlgo, changeAlgo } = useGlobalContext();
   console.log(rect);
   const style = {
@@ -11,15 +11,15 @@ function Dropdown({ rect }) {
     width: `${rect.width}px`,
   };
   return (
-    <div className="dropdown" style={style}>
+    <div className={`dropdown ${show ? "dropdown-show" : ""}`} style={style}>
       {algorithms.map((algo, index) => {
         return (
           <li
             className={`${
               currentAlgo !== ""
                 ? algo === currentAlgo
-                  ? "active"
-                  : "inactive"
+                  ? "active-algo"
+                  : ""
                 : ""
             }`}
             key={index}
