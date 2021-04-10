@@ -33,7 +33,9 @@ function Grid() {
             : "node"
         } ${currentVertex === index && "active"}`;
         const style = {
-          // transitionDelay: `${node > 1 ? `${node - 1}s` : "0s"}`,
+          transition: ` background 0s linear ${
+            node > 1 ? `${node - 1}s` : "0s"
+          }, color 0s`,
         };
         return (
           <div
