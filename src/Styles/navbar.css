@@ -1,0 +1,51 @@
+.navbar {
+  padding: 0.5rem;
+  display: grid;
+  grid-template-columns: 50px 200px 1fr 50px;
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+}
+.themeToggle {
+  display: flex;
+  justify-content: flex-end;
+}
+.title {
+  font-size: 1.5rem;
+  font-weight: bolder;
+}
+ul {
+  margin: 0px;
+  padding: 0 0.2rem;
+  justify-content: space-around;
+  justify-self: stretch;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 180px);
+  gap: 0.5rem;
+}
+
+ul li {
+  background: var(--primary-dark);
+  display: flex;
+  text-decoration: none;
+  padding: 0.8rem;
+  text-align: center;
+  color: var(--dark);
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  /* font-weight: bolder; */
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+}
+
+ul li:hover {
+  color: var(--primary);
+  font-weight: bold;
+}
+
+li:hover {
+  cursor: pointer;
+}

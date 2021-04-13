@@ -1,0 +1,48 @@
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(40, 32px);
+  grid-template-rows: repeat(17, 32px);
+  justify-content: center;
+  margin-top: 2rem;
+  /* border: 1px black solid; */
+}
+
+/* graph node styles */
+
+/* normal unselected node */
+.node {
+  background-color: var(--grid-node-color);
+  border: none;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.node:hover {
+  background-color: var(--grid-node-color-hover);
+}
+
+/* node selected as vertex */
+.vertex {
+  background-color: var(--grid-node-color-vertex);
+  border: none;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.visited {
+  background-color: var(--grid-node-color-visited-vertex);
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
+
+/* active button which is selected as the first end-point of edge */
+.active {
+  background-color: var(--primary-dark);
+  z-index: 2;
+}

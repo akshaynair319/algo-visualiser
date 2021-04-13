@@ -1,7 +1,7 @@
 import React from "react";
 import { algorithms } from "../Data/Algorithms";
 import { useGlobalContext } from "./Context";
-
+import "../Styles/dropdown.css";
 function Dropdown({ rect, show }) {
   const { currentAlgo, changeAlgo } = useGlobalContext();
   console.log(rect);

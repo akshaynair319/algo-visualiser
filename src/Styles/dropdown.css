@@ -1,0 +1,34 @@
+.dropdown {
+  position: absolute;
+  left: 100px;
+  top: 0px;
+  margin: 0;
+  padding: 0;
+  background-color: var(--dark);
+  z-index: 3;
+  display: none;
+}
+
+.dropdown-show {
+  display: block;
+  animation-name: dropdown;
+}
+
+.fa-caret-down {
+  padding: 0 0 0 5px;
+}
+.dropdown li {
+  text-transform: uppercase;
+  text-decoration: none;
+  list-style-type: none;
+  text-align: center;
+  margin: 0.5rem;
+  padding: 1rem;
+  font-size: 0.8rem;
+  /* background-color: var(--primary); */
+  color: var(--primary);
+}
+.dropdown li:hover {
+  background-color: var(--primary);
+  color: var(--dark);
+}

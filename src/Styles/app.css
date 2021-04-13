@@ -1,0 +1,7 @@
+.appContainer {
+  display: grid;
+  grid-template-rows: 1fr 9fr;
+  grid-template-columns: 100%;
+  justify-content: center;
+  align-items: center;
+}

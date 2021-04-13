@@ -1,5 +1,6 @@
 import React from "react";
 import { useGlobalContext } from "./Context";
+import "../Styles/edge.css";
 
 function Edge({ edge }) {
   const { x1, x2, y1, y2, weight } = edge;

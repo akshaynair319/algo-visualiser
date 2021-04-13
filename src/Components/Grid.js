@@ -2,7 +2,7 @@ import React, { useRef, useEffect } from "react";
 import "../Styles/index.css";
 import DrawEdges from "./DrawEdges";
 import { useGlobalContext } from "./Context";
-
+import "../Styles/grid.css";
 function Grid() {
   const {
     vertices,

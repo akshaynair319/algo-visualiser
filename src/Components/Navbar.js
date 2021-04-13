@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import Dropdown from "./Dropdown";
 import Customize from "./Customize";
 import { useGlobalContext } from "./Context";
+import "../Styles/navbar.css";
 
 function Navbar() {
   const {
