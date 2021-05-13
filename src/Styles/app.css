@@ -1,6 +1,7 @@
 .appContainer {
+  width: 1285px !important;
   display: grid;
-  grid-template-rows: 1fr 9fr;
+  grid-template-rows: 1fr 8fr;
   grid-template-columns: 100%;
   justify-content: center;
   align-items: center;

@@ -6,7 +6,7 @@ function Customize() {
   return (
     <div>
       <i
-        class="fas fa-chevron-circle-down fa-2x "
+        className="fas fa-chevron-circle-down fa-2x "
         onClick={() => setCustomize(!customize)}
       ></i>
     </div>

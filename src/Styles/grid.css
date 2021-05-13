@@ -3,7 +3,7 @@
   grid-template-columns: repeat(40, 32px);
   grid-template-rows: repeat(17, 32px);
   justify-content: center;
-  margin-top: 2rem;
+  /* margin-top: 2rem; */
   /* border: 1px black solid; */
 }
 

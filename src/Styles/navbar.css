@@ -21,11 +21,11 @@ ul {
   justify-self: stretch;
   list-style: none;
   display: grid;
-  grid-template-columns: repeat(auto-fill, 180px);
+  grid-template-columns: 180px repeat(auto-fill, 100px);
   gap: 0.5rem;
 }
 
-ul li {
+.selectAlgo {
   background: var(--primary-dark);
   display: flex;
   text-decoration: none;
@@ -48,4 +48,33 @@ ul li:hover {
 
 li:hover {
   cursor: pointer;
+}
+
+.options {
+  text-decoration: none;
+  padding: 0.8rem;
+  /* color: var(--dark);   */
+  /* box-shadow: var(--shadow); */
+  margin: 0 auto;
+  align-items: center;
+  justify-content: center;
+}
+
+.fa-play {
+  color: green;
+}
+.fa-play:hover {
+  color: rgb(0, 255, 0);
+}
+.fa-redo {
+  color: green;
+}
+.fa-redo:hover {
+  color: rgb(0, 255, 0);
+}
+.fa-trash {
+  color: rgb(185, 48, 48);
+}
+.fa-trash:hover {
+  color: rgb(255, 0, 0);
 }

@@ -5,14 +5,12 @@ import { useGlobalContext } from "./Context";
 import "../Styles/navbar.css";
 
 function Navbar() {
-  const {
-    clearAll,
-    refresh,
-    startVisualisation,
-    currentAlgo,
-  } = useGlobalContext();
+  const { clearAll, refresh, startVisualisation, currentAlgo } =
+    useGlobalContext();
 
-  const [theme, setTheme] = useState("light-theme");
+  const [theme, setTheme] = useState(
+    localStorage.getItem("theme") || "light-theme"
+  );
   const [dropdown, setDropdown] = useState(false);
 
   const selectAlgoRef = useRef(null);
@@ -30,6 +28,7 @@ function Navbar() {
     if (theme === newTheme) {
       newTheme = "dark-theme";
     }
+    localStorage.setItem("theme", newTheme);
     setTheme(newTheme);
   };
 
@@ -49,14 +48,18 @@ function Navbar() {
         <li
           onClick={() => setDropdown(!dropdown)}
           ref={selectAlgoRef}
-          className={`${currentAlgo !== "" ? "active-algo" : ""}`}
+          className={`selectAlgo ${currentAlgo !== "" ? "active-algo" : ""}`}
         >
           {currentAlgo || "Select ALgo"}
-          <i class="fas fa-caret-down fa-2x"></i>
+          <i className="fas fa-caret-down fa-2x"></i>
         </li>
-        <li onClick={startVisualisation}>begin</li>
-        <li onClick={refresh}>refresh</li>
-        <li onClick={clearAll}>delete</li>
+        <i
+          className="options fas fa-play fa-2x"
+          onClick={startVisualisation}
+        ></i>
+
+        <i className="options fas fa-redo fa-2x" onClick={refresh}></i>
+        <i className="options fas fa-trash fa-2x" onClick={clearAll}></i>
       </ul>
       <Customize />
     </div>
