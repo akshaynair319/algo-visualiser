@@ -6,7 +6,7 @@
   --dark: rgb(22, 21, 21);
   --shadow: 0 1px 5px rgb(104, 104, 104);
   --grid-node-color: rgb(249, 243, 243);
-  --grid-node-color-hover: rgb(0, 0, 0);
+  --grid-node-color-hover: rgb(134, 131, 131);
   --grid-node-color-vertex: black;
   --grid-node-color-visited-vertex: #5983f8;
 }
@@ -17,6 +17,7 @@
   --dark: rgb(22, 21, 21);
   --shadow: 0 1px 5px rgb(104, 104, 104);
   --grid-node-color: #f9f3f3;
+  --grid-node-color-vertex: black;
   --grid-node-color-visited-vertex: #5983f8;
 }
 .dark-theme {
@@ -24,6 +25,7 @@
   --dark: #ccc;
   --shadow: 0 1px 5px rgba(245, 223, 223, 0.459);
   --grid-node-color: #2b2929;
+  --grid-node-color-vertex: #ccc;
   --grid-node-color-visited-vertex: #5983f8;
 }
 html {

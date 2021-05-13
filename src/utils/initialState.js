@@ -10,8 +10,7 @@ export const getInitialState = () => {
   return {
     vertices: nodes,
     currentVertex: null,
-    verticesAdded: 0,
-    edgesAdded: 0,
+    lock: false,
     edge: {
       //properties of the latest edge: from{x1,y1, node1} to{x2,y2,node2}
       x1: -1,
@@ -23,6 +22,7 @@ export const getInitialState = () => {
     },
     edges: [],
     adjList: [],
+    last_actions: [],
     currentAlgo: "",
     startNode: -1,
     nodesDist: nodes.map((nodes) => 10000),

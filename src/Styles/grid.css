@@ -18,9 +18,9 @@
   align-items: center;
   cursor: pointer;
 }
-.node:hover {
+/* .node:hover {
   background-color: var(--grid-node-color-hover);
-}
+} */
 
 /* node selected as vertex */
 .vertex {
@@ -31,6 +31,10 @@
   align-items: center;
   cursor: pointer;
   z-index: 2;
+}
+
+.vertex:hover {
+  margin: -4px;
 }
 
 .visited {

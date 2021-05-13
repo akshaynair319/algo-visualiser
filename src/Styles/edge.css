@@ -1,7 +1,11 @@
 .edge {
-  border-top: 2px solid black;
+  border-top: 4px solid black;
   position: absolute;
   text-align: center;
   margin: 0;
   padding: 0;
+}
+
+.edge:hover {
+  border-top: 8px solid red;
 }

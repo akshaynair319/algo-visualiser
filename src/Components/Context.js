@@ -9,6 +9,10 @@ const initialState = getInitialState();
 export const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
+  //function for undoing last action
+  const undo = () => {
+    dispatch({ type: ACTIONS.UNDO });
+  };
   //function for clearing the board
   const clearAll = () => {
     dispatch({ type: ACTIONS.DELETE });
@@ -17,6 +21,11 @@ export const AppProvider = ({ children }) => {
   //function for clearing the progress of the algorithm
   const refresh = () => {
     dispatch({ type: ACTIONS.REFRESH });
+  };
+
+  //function for locking and unlocking the graph (saving user from unnecessary mistakes)
+  const toggleLock = () => {
+    dispatch({ type: ACTIONS.TOGGLE_LOCK });
   };
 
   const updatePoints = (width, height) => {
@@ -47,11 +56,13 @@ export const AppProvider = ({ children }) => {
     <AppContext.Provider
       value={{
         ...state,
+        undo,
+        refresh,
         clearAll,
+        toggleLock,
         makeNode,
         updatePoints,
         changeAlgo,
-        refresh,
         startVisualisation,
       }}
     >

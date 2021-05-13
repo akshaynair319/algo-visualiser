@@ -4,6 +4,45 @@ import { dfs } from "./dfs";
 import { dijktras } from "./dijktras";
 import { getInitialState } from "./initialState";
 export const reducer = (state, action) => {
+  if (action.type === ACTIONS.UNDO) {
+    if (state.lock) {
+      return state;
+    }
+    if (state.last_actions.length === 0) {
+      return state;
+    }
+    const last_index = state.last_actions.length - 1;
+    if (state.last_actions[last_index] === "edge") {
+      //last operation was an edge
+      return {
+        ...state,
+        edges: state.edges.filter(
+          (edge, index) => index !== state.edges.length - 1
+        ),
+        adjList: state.adjList.filter(
+          (adjItem, index) => index !== state.adjList.length - 1
+        ),
+        last_actions: state.last_actions.filter(
+          (actions, index) => index !== last_index
+        ),
+      };
+    } else {
+      //last operation was an vertex
+      const vertex_index = state.last_actions[last_index];
+      return {
+        ...state,
+        vertices: state.vertices.map((vertex, index) => {
+          if (index === vertex_index) {
+            return 0;
+          }
+          return vertex;
+        }),
+        last_actions: state.last_actions.filter(
+          (actions, index) => index !== last_index
+        ),
+      };
+    }
+  }
   if (action.type === ACTIONS.DELETE) {
     return getInitialState();
   }
@@ -26,11 +65,18 @@ export const reducer = (state, action) => {
         return 0;
       }),
       nodesDist: state.vertices.map((node) => 10000),
+      lock: false,
     };
   }
+  if (action.type === ACTIONS.TOGGLE_LOCK) {
+    return { ...state, lock: !state.lock };
+  }
   if (action.type === ACTIONS.MAKENODE) {
+    if (state.lock) {
+      return state;
+    }
     const index = action.payload;
-    console.log(index);
+    // console.log(index);
     //if an algorithm is running ignore clicks
     if (state.currentAlgo !== "") {
       return state;
@@ -42,6 +88,7 @@ export const reducer = (state, action) => {
         ...state,
         currentVertex: null,
         edge: { x1: -1, x2: -1, y1: -1, y2: -1, node1: -1, node2: -1 },
+        startNode: index,
       };
     }
     //set this node as the current node
@@ -51,10 +98,10 @@ export const reducer = (state, action) => {
       return { ...state, currentVertex: index };
     }
 
+    //this is a new vertex added
     return {
       ...state,
       currentVertex: null,
-      verticesAdded: state.verticesAdded + 1,
       startNode: index,
       edge: {
         x1: -1,
@@ -71,12 +118,13 @@ export const reducer = (state, action) => {
         }
         return vertex;
       }),
+      last_actions: [...state.last_actions, index],
     };
   }
   if (action.type === ACTIONS.MAKEEDGE) {
     //ignore if currently doing graph traversal
     if (state.currentAlgo !== "") return state;
-    console.log(action.payload);
+    // console.log(action.payload);
     //maybe this vertex is part of an edge
     if (state.edge.x1 !== -1) {
       //found an edge
@@ -106,8 +154,8 @@ export const reducer = (state, action) => {
           node2: -1,
           weight: -1,
         },
-        edgesAdded: state.edgesAdded + 1,
         currentVertex: null,
+        last_actions: [...state.last_actions, "edge"],
       };
     } else {
       //maybe this is the first node of an edge
@@ -123,7 +171,7 @@ export const reducer = (state, action) => {
     }
   }
   if (action.type === ACTIONS.CHANGEALGO) {
-    return { ...state, currentAlgo: action.payload };
+    return { ...state, currentAlgo: action.payload, lock: true };
   }
   if (action.type === ACTIONS.VISUALISE) {
     if (action.payload === "bfs") {
@@ -146,5 +194,5 @@ export const reducer = (state, action) => {
     }
   }
 
-  throw new Error("invlaid call");
+  throw new Error("invalid call");
 };
