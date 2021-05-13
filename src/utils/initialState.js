@@ -1,6 +1,6 @@
 export const getInitialState = () => {
-  const cols = 40;
-  const rows = 17;
+  const cols = Math.floor(window.innerWidth / 32);
+  const rows = Math.floor(window.innerHeight / 32) - 4;
   const number_of_nodes = rows * cols;
   let nodes = new Array(number_of_nodes + 1)
     .join("0")
@@ -8,6 +8,8 @@ export const getInitialState = () => {
     .map(parseFloat);
 
   return {
+    cols: cols,
+    rows: rows,
     vertices: nodes,
     currentVertex: null,
     lock: false,

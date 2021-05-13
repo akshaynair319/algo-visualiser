@@ -1,7 +1,7 @@
 .grid-container {
   display: grid;
-  grid-template-columns: repeat(40, 32px);
-  grid-template-rows: repeat(17, 32px);
+  grid-template-columns: repeat(var(--cols), 32px);
+  grid-template-rows: repeat(var(--rows), 32px);
   justify-content: center;
   /* margin-top: 2rem; */
   /* border: 1px black solid; */

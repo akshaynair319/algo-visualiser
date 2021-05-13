@@ -1,0 +1,9 @@
+.optionDropDown {
+  display: none;
+}
+
+@media (max-width: 950px) {
+  .optionDropDown {
+    display: block;
+  }
+}

@@ -1,12 +1,14 @@
 .dropdown {
   position: absolute;
-  left: 100px;
-  top: 0px;
   margin: 0;
   padding: 0;
   background-color: var(--dark);
   z-index: 3;
   display: none;
+  width: max-content;
+  height: max-content;
+  max-width: 100%;
+  text-align: center;
 }
 
 .dropdown-show {
@@ -21,14 +23,12 @@
   text-transform: uppercase;
   text-decoration: none;
   list-style-type: none;
-  text-align: center;
-  margin: 0.5rem;
-  padding: 1rem;
+  padding: 1rem 0;
   font-size: 0.8rem;
-  /* background-color: var(--primary); */
   color: var(--primary);
+  text-align: center;
 }
 .dropdown li:hover {
-  background-color: var(--primary);
+  background: var(--primary);
   color: var(--dark);
 }

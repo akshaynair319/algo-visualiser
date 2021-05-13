@@ -11,6 +11,8 @@ function Grid() {
     updatePoints,
     nodesDist,
     currentAlgo,
+    cols,
+    rows,
   } = useGlobalContext();
 
   const activeNode = useRef(null);
@@ -21,6 +23,14 @@ function Grid() {
       updatePoints(myNode.x, myNode.y);
     }
   }, [currentVertex]);
+
+  useEffect(() => {
+    let r = document.querySelector(":root");
+    console.log(r.style);
+    r.style.setProperty("--cols", cols);
+    r.style.setProperty("--rows", rows);
+    console.log(r.style);
+  }, [cols, rows]);
 
   return (
     <div className="grid-container">
