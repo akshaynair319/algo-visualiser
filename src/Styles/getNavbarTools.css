@@ -5,7 +5,8 @@
 
 @media (max-width: 950px) {
   .tools {
-    display: none;
+    display: block;
+    position: absolute;
   }
 }
 .tooltip-container {

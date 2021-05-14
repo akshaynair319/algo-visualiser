@@ -9,6 +9,17 @@ function Navbar() {
     localStorage.getItem("theme") || "light-theme"
   );
 
+  //checking for window size
+  const [windowSize, setWindowSize] = useState(window.innerWidth);
+
+  const alterWindowSize = () => setWindowSize(window.innerWidth);
+  useEffect(() => {
+    window.addEventListener("resize", alterWindowSize);
+    return () => {
+      window.removeEventListener("resize", alterWindowSize);
+    };
+  });
+
   useEffect(() => {
     document.documentElement.className = theme;
   }, [theme]);
@@ -34,7 +45,7 @@ function Navbar() {
       {/* tools for graph */}
       <ul className="navbar-items">
         <SelectAlgo />
-        <GetNavbarTools />
+        {windowSize >= 950 && <GetNavbarTools />}
       </ul>
       {/* component for drop-down for small window */}
       <DropdownTools />

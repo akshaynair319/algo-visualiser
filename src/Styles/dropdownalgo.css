@@ -13,7 +13,6 @@
 
 .dropdown-show {
   display: block;
-  animation-name: dropdown;
 }
 
 .fa-caret-down {

@@ -1,18 +1,18 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 
-import "./../Styles/Customize.css";
+import "./../Styles/dropdownTools.css";
+import GetNavbarTools from "./NavbarTools/GetNavbarTools";
 
 function DropdownTools() {
-  const [click, setClick] = useState(false);
-
-  const dropDownRef = useRef(null);
+  const [show, setShow] = useState(false);
 
   return (
-    <div className="optionDropDown" ref={dropDownRef}>
+    <div className="optionDropDown">
       <i
         className="fas fa-chevron-circle-down fa-2x "
-        onClick={() => setClick(!click)}
+        onClick={() => setShow(!show)}
       ></i>
+      {show && <GetNavbarTools />}
     </div>
   );
 }
