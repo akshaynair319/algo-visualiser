@@ -3,7 +3,16 @@ import { useGlobalContext } from "./Context";
 import "../Styles/edge.css";
 
 function Edge({ edge }) {
-  const { x1, x2, y1, y2, weight } = edge;
+  const node1 = edge[0];
+  const node2 = edge[1];
+  const weight = edge[2];
+  const a = document.getElementById(`#${node1}`);
+  const x1 = a.offsetLeft;
+  const y1 = a.offsetTop;
+  const b = document.getElementById(`#${node2}`);
+  const x2 = b.offsetLeft;
+  const y2 = b.offsetTop;
+
   const { size, currentAlgo } = useGlobalContext();
   if (x1 === -1) {
     return <></>;

@@ -26,10 +26,8 @@ function Grid() {
 
   useEffect(() => {
     let r = document.querySelector(":root");
-    console.log(r.style);
     r.style.setProperty("--cols", cols);
     r.style.setProperty("--rows", rows);
-    console.log(r.style);
   }, [cols, rows]);
 
   return (
@@ -42,6 +40,7 @@ function Grid() {
               : "vertex"
             : "node"
         } ${currentVertex === index && "active"}`;
+        //transition style for node propagation animation
         const style = {
           transition: ` background 0s linear ${
             node > 1 ? `${node - 1}s` : "0s"
@@ -49,6 +48,7 @@ function Grid() {
         };
         return (
           <div
+            id={`#${index}`}
             className={className}
             style={style}
             key={index}

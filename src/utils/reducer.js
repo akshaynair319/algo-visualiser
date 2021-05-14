@@ -16,9 +16,6 @@ export const reducer = (state, action) => {
       //last operation was an edge
       return {
         ...state,
-        edges: state.edges.filter(
-          (edge, index) => index !== state.edges.length - 1
-        ),
         adjList: state.adjList.filter(
           (adjItem, index) => index !== state.adjList.length - 1
         ),
@@ -50,10 +47,6 @@ export const reducer = (state, action) => {
     return {
       ...state,
       edge: {
-        x1: -1,
-        x2: -1,
-        y1: -1,
-        y2: -1,
         node1: -1,
         node2: -1,
         weight: -1,
@@ -87,7 +80,7 @@ export const reducer = (state, action) => {
       return {
         ...state,
         currentVertex: null,
-        edge: { x1: -1, x2: -1, y1: -1, y2: -1, node1: -1, node2: -1 },
+        edge: { ...state.edge, node1: -1 },
         startNode: index,
       };
     }
@@ -104,10 +97,6 @@ export const reducer = (state, action) => {
       currentVertex: null,
       startNode: index,
       edge: {
-        x1: -1,
-        x2: -1,
-        y1: -1,
-        y2: -1,
         node1: -1,
         node2: -1,
         weight: -1,
@@ -124,9 +113,8 @@ export const reducer = (state, action) => {
   if (action.type === ACTIONS.MAKEEDGE) {
     //ignore if currently doing graph traversal
     if (state.currentAlgo !== "") return state;
-    // console.log(action.payload);
     //maybe this vertex is part of an edge
-    if (state.edge.x1 !== -1) {
+    if (state.edge.node1 !== -1) {
       //found an edge
       const edgeWeight = Math.floor(Math.random() * 10 + 1);
       return {
@@ -135,21 +123,7 @@ export const reducer = (state, action) => {
           ...state.adjList,
           [state.edge.node1, state.currentVertex, edgeWeight],
         ],
-        edges: [
-          ...state.edges,
-          {
-            ...state.edge,
-            x2: action.payload.width,
-            y2: action.payload.height,
-            node2: state.currentVertex,
-            weight: edgeWeight,
-          },
-        ],
         edge: {
-          x1: -1,
-          x2: -1,
-          y1: -1,
-          y2: -1,
           node1: -1,
           node2: -1,
           weight: -1,
@@ -163,8 +137,6 @@ export const reducer = (state, action) => {
         ...state,
         edge: {
           ...state.edge,
-          x1: action.payload.width,
-          y1: action.payload.height,
           node1: state.currentVertex,
         },
       };
