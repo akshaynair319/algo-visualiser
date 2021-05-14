@@ -1,5 +1,6 @@
 export const getInitialState = () => {
   const size = 32;
+  const windowSize = window.innerWidth;
   const cols = Math.floor(window.screen.width / size) - 1;
   const rows = Math.floor(window.screen.height / size) - 4;
   const number_of_nodes = rows * cols;
@@ -10,6 +11,7 @@ export const getInitialState = () => {
 
   return {
     size: size,
+    windowSize: windowSize,
     cols: cols,
     rows: rows,
     vertices: nodes,

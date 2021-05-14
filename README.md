@@ -1,18 +1,18 @@
 # Algo Visualiser Guide
 
-Live Demo: https://akshaynair319.github.io/algo-visualiser/
+[Live Demo](https://akshaynair319.github.io/algo-visualiser/)
 
-Created using React 
+Created using React
 
 ## Steps to Run
 
-clone the project 
+clone the project
 
 then in cmd run
 
 ### `npm install`
 
-to download the node-modules folder, then run 
+to download the node-modules folder, then run
 
 ### `npm start`
 

@@ -3,6 +3,7 @@ import { bfs } from "./bfs";
 import { dfs } from "./dfs";
 import { dijktras } from "./dijktras";
 import { getInitialState } from "./initialState";
+import { getNeighboringVertices } from "./getNeighboringVertices";
 export const reducer = (state, action) => {
   if (action.type === ACTIONS.UNDO) {
     if (state.lock) {
@@ -26,11 +27,19 @@ export const reducer = (state, action) => {
     } else {
       //last operation was an vertex
       const vertex_index = state.last_actions[last_index];
+      const notAllowed = getNeighboringVertices(
+        vertex_index,
+        state.rows,
+        state.cols
+      );
       return {
         ...state,
         vertices: state.vertices.map((vertex, index) => {
           if (index === vertex_index) {
             return 0;
+          }
+          if (notAllowed.includes(index)) {
+            return vertex + 1;
           }
           return vertex;
         }),
@@ -84,14 +93,21 @@ export const reducer = (state, action) => {
         startNode: index,
       };
     }
-    //set this node as the current node
 
+    //set this node as the current node
     //if this node was already an vertex
     if (state.vertices[index] === 1) {
       return { ...state, currentVertex: index };
     }
 
-    //this is a new vertex added
+    //see if its possible to make this node as vertex
+    if (state.vertices[index] < 0) {
+      return state;
+    }
+    //this is a new vertex
+    // get those nodes where putting a new vertex is not allowed
+    let notAllowed = getNeighboringVertices(index, state.rows, state.cols);
+
     return {
       ...state,
       currentVertex: null,
@@ -104,6 +120,9 @@ export const reducer = (state, action) => {
       vertices: state.vertices.map((vertex, idx) => {
         if (index === idx) {
           return 1;
+        }
+        if (notAllowed.includes(idx)) {
+          return vertex - 1;
         }
         return vertex;
       }),
@@ -164,6 +183,12 @@ export const reducer = (state, action) => {
         nodesDist: dijktras(state.startNode, state.nodesDist, state.adjList),
       };
     }
+  }
+  if (action.type === ACTIONS.WINDOW_RESIZE) {
+    return {
+      ...state,
+      windowSize: window.innerWidth,
+    };
   }
 
   throw new Error("invalid call");

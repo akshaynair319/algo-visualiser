@@ -11,6 +11,11 @@ function SelectAlgo() {
   const [width, setWidth] = useState(-1);
 
   const selectAlgoRef = useRef(null);
+  const { windowSize } = useGlobalContext();
+  const [size, setSize] = useState(windowSize);
+  useEffect(() => {
+    setSize(windowSize);
+  }, [windowSize]);
 
   useEffect(() => {
     setDropdown(false);

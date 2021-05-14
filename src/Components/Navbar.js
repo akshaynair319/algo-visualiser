@@ -3,22 +3,21 @@ import "../Styles/navbar.css";
 import DropdownTools from "./DropdownTools";
 import GetNavbarTools from "./NavbarTools/GetNavbarTools";
 import SelectAlgo from "./SelectAlgo";
+import { useGlobalContext } from "./Context";
+
 function Navbar() {
   // handling light and dark themes through navbar
   const [theme, setTheme] = useState(
     localStorage.getItem("theme") || "light-theme"
   );
 
-  //checking for window size
-  const [windowSize, setWindowSize] = useState(window.innerWidth);
+  const { windowSize } = useGlobalContext();
 
-  const alterWindowSize = () => setWindowSize(window.innerWidth);
+  //checking for window size
+  const [size, setSize] = useState(windowSize);
   useEffect(() => {
-    window.addEventListener("resize", alterWindowSize);
-    return () => {
-      window.removeEventListener("resize", alterWindowSize);
-    };
-  });
+    setSize(windowSize);
+  }, [windowSize]);
 
   useEffect(() => {
     document.documentElement.className = theme;
@@ -45,7 +44,7 @@ function Navbar() {
       {/* tools for graph */}
       <ul className="navbar-items">
         <SelectAlgo />
-        {windowSize >= 950 && <GetNavbarTools />}
+        {size >= 950 && <GetNavbarTools />}
       </ul>
       {/* component for drop-down for small window */}
       <DropdownTools />

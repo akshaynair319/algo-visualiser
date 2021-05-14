@@ -1,4 +1,4 @@
-import React, { useContext, useReducer } from "react";
+import React, { useEffect, useContext, useReducer } from "react";
 import { reducer } from "../utils/reducer";
 import { ACTIONS } from "../utils/actions";
 import { getInitialState } from "../utils/initialState";
@@ -8,6 +8,17 @@ const initialState = getInitialState();
 
 export const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
+
+  //getting new width of window
+  const resizeWindow = () => {
+    dispatch({ type: ACTIONS.WINDOW_RESIZE });
+  };
+  useEffect(() => {
+    window.addEventListener("resize", resizeWindow);
+    return () => {
+      window.removeEventListener("resize", resizeWindow);
+    };
+  });
 
   //function for undoing last action
   const undo = () => {

@@ -3,18 +3,12 @@ import Edge from "./Edge";
 import { useGlobalContext } from "./Context";
 
 function DrawEdges() {
-  const { adjList } = useGlobalContext();
-  const [size, setSize] = useState(window.innerWidth);
-
-  const changeSize = () => {
-    setSize(window.innerWidth);
-  };
+  const { adjList, windowSize } = useGlobalContext();
+  const [size, setSize] = useState(windowSize);
   useEffect(() => {
-    window.addEventListener("resize", changeSize);
-    return () => {
-      window.removeEventListener("resize", changeSize);
-    };
-  });
+    setSize(windowSize);
+  }, [windowSize]);
+
   return (
     <div>
       {adjList.map((edge, index) => {
