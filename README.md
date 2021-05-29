@@ -1,6 +1,6 @@
-# Algo Visualiser Guide
+# Graph Visualiser Guide
 
-[Live Demo](https://akshaynair319.github.io/algo-visualiser/)
+[Live Demo](https://akshaynair319.github.io/graph-visualiser/)
 
 Created using React
 
