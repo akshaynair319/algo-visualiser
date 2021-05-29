@@ -1,6 +1,6 @@
 {
-  "homepage": "http://akshaynair319.github.io/algo-visualiser",
-  "name": "algo-visualiser",
+  "homepage": "http://akshaynair319.github.io/graph-visualiser",
+  "name": "graph-visualiser",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
