@@ -1,31 +1,47 @@
 .navbar {
   padding: 0.5rem;
   display: grid;
-  grid-template-columns: 50px 200px 1fr 50px;
+  grid-template-columns: 50px 200px 1fr 2fr;
+  grid-template-rows: 1fr;
+  grid-template-areas: "toggle title select items";
   align-items: center;
   justify-content: center;
   justify-items: center;
 }
 .themeToggle {
+  grid-area: toggle;
   display: flex;
   justify-content: flex-end;
+  cursor: pointer;
 }
 .title {
+  grid-area: title;
   font-size: 1.5rem;
   font-weight: bolder;
 }
 .navbar-items {
-  margin: 0 0 0 1rem;
+  margin: 0;
   padding: 0;
   justify-content: space-around;
   justify-self: stretch;
   list-style: none;
   display: grid;
-  grid-template-columns: 2fr 5fr;
 }
-
+.select-algo {
+  grid-area: select;
+  grid-template-columns: 1fr;
+}
+.navbar-tools {
+  grid-area: items;
+  grid-template-columns: 1fr;
+}
 @media (max-width: 950px) {
-  .navbar-items {
-    grid-template-columns: 1fr 1fr;
+  .navbar {
+    grid-template-columns: 50px 200px 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas:
+      "toggle title select"
+      "items items items";
+    grid-row-gap: 10px;
   }
 }

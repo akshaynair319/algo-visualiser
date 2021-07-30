@@ -31,7 +31,10 @@ function SelectAlgo() {
     }
   };
 
-  useEffect(getCoordinates, []);
+  useEffect(() => {
+    setTimeout(getCoordinates, 0);
+  }, []);
+
   useEffect(() => {
     window.addEventListener("resize", getCoordinates);
     return () => {

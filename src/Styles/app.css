@@ -1,9 +1,9 @@
 .appContainer {
-  /* width: 1285px !important; */
   display: grid;
-  grid-template-rows: 1fr 8fr;
+  /* grid-template-rows: 1fr 8fr; */
   grid-template-columns: 100%;
   justify-content: center;
   align-items: center;
   gap: 1rem;
+  /* height: 1500px; */
 }

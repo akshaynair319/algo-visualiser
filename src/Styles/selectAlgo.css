@@ -18,7 +18,7 @@
   display: flex;
   text-decoration: none;
   text-align: center;
-  color: var(--dark);
+  color: white;
   text-transform: uppercase;
   font-size: 0.8rem;
   cursor: pointer;
@@ -27,6 +27,6 @@
 }
 
 .algo-btn:hover {
-  color: var(--primary);
-  font-weight: bold;
+  /* font-weight: bold; */
+  font-size: 1rem;
 }

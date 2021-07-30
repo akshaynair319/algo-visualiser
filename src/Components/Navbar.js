@@ -42,12 +42,10 @@ function Navbar() {
       <div className="title">algo-visualiser </div>
 
       {/* tools for graph */}
-      <ul className="navbar-items">
+      <ul className="navbar-items select-algo">
         <SelectAlgo />
-        {size >= 950 && <GetNavbarTools />}
       </ul>
-      {/* component for drop-down for small window */}
-      <DropdownTools />
+      <ul className="navbar-items navbar-tools">{<GetNavbarTools />}</ul>
     </div>
   );
 }

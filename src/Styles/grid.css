@@ -3,6 +3,7 @@
   grid-template-columns: repeat(var(--cols), 32px);
   grid-template-rows: repeat(var(--rows), 32px);
   justify-content: center;
+  align-self: flex-start;
   /* margin-top: 2rem; */
   /* border: 1px black solid; */
 }
